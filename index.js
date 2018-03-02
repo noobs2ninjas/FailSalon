@@ -51,6 +51,7 @@ Bot.on('join', () => {
       }
       Bot.say(messageString);
     } else if (else if ((chatter.mod || (chatter.badges != null && chatter.badges.broadcaster != null && chatter.badges.broadcaster)) && words.includes("!stopquestion"))) {
+      console.log("stopped message tracking")
       questionOn = false
     } else if (questionOn) { 
       if (answers[chatter.display_name] == null) { answers[chatter.display_name] = []; }
