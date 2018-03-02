@@ -14,3 +14,11 @@ Before beginning please install [NodeJS](https://nodejs.org/en/)
 
 ## 4. Start the application.
     The fastest way to do this is to back out of the folder this project is in and shift + right-click the folder. When the cmd window opens type in npm start and hit enter.
+
+# Commands
+
+* !newquestion
+    This begins a new question. Duh.
+* !whosaid Word
+    This command will search for the word or phrase typed after it. So "!whosaid pizza" will search for "pizza". "!whosaid Phil Has a Perrty Mouth" will search for "phil has a perrty mouth". All answers are stored in in lower case. All words or phrases for !whosaid will be converted to lower case.
+
