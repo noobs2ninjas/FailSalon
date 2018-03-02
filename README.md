@@ -13,9 +13,8 @@ Before beginning please install [NodeJS](https://nodejs.org/en/)
     After downloading(best method) the package from this page or cloning the repository travel into the folder and open index.js in a text editor. Then travel to line 5, 6, and 7 and fill in the information for your bot and your channel as well as the oauth token you just aquired. Pretty self explanitory.
 
 4. Start the application.
-    The fastest way to do this is to back out of the folder this project is in and shift + right-click the folder. Then select the option "Open cmd line here" or "Open in Powershell"(depending on the version of windows you have).
-
-    When the cmd or powershell window opens type in "npm start" and hit enter.
+    The fastest way to do this is to back out of the folder this project is in and shift + right-click the folder. Then select the option "Open cmd line here" or "Open in Powershell"(depending on the version of windows you have). When the cmd or powershell window opens type in "npm start" and hit enter.
+    **The first time you download and run this application type "npm install" BEFORE running npm start**
 
 # Commands
 
