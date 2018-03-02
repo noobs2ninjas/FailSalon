@@ -1,0 +1,14 @@
+{
+  "name": "FailSalon",
+  "version": "1.0.0",
+  "description": "Bot for FailSalon",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "twitch-bot": "1.2.3"
+  }
+}
