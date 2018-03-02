@@ -3,7 +3,7 @@ const TwitchBot = require('twitch-bot');
 
 const Bot = new TwitchBot({
   username: 'yourbotusername',
-  oauth: 'oauth here',
+  oauth: 'oauth:youroauthhere',
   channels : ['yourchannel']
 })
 
@@ -50,6 +50,8 @@ Bot.on('join', () => {
         }
       }
       Bot.say(messageString);
+    else if (else if ((chatter.mod || (chatter.badges != null && chatter.badges.broadcaster != null && chatter.badges.broadcaster)) && words.includes("!stopquestion"))) {
+      questionOn = false
     } else if (questionOn) { 
       if (answers[chatter.display_name] == null) { answers[chatter.display_name] = []; }
       answers[chatter.display_name].push(chatter.message.toLowerCase())
