@@ -2,6 +2,10 @@ var Game = require('./src/Game')
 var game = new Game();
 const TwitchBot = require('twitch-bot');
 
+var questionOn = false;
+var lastUsed;
+var timerSet = false;
+
 const Bot = new TwitchBot({
   username: process.env.USERNAME,
   oauth: process.env.OAUTH,
@@ -14,14 +18,6 @@ const Bot = new TwitchBot({
 //   channels : ['noobs2ninjas']
 // })
 
-function didUserSay(answer, userMessages) {
-  for (messageIndex in userMessages) {
-    var words = userMessages[messageIndex].split(" ")
-    if (words.includes(answer)) { return true; }
-  }
-  return false;
-}
-
 function getAnswerString(words) {
   var answerString = "";
   for (index in words){
@@ -31,8 +27,17 @@ function getAnswerString(words) {
       answerString += " ";
     }
   }
-  console.log("looking for: " + answerString)
   return answerString.toLowerCase().trim()
+}
+
+function checkLastUsed() {
+  var now  = new Date()
+  var difference = new Date().getTime() - lastUsed.getTime()
+  if (difference < 36000) {
+    game = null;
+  } else { 
+    setTimeOut(checkLastUsed, difference); 
+  }
 }
 
 function canAdmin(chatter) {
@@ -40,37 +45,38 @@ function canAdmin(chatter) {
 }
 
 Bot.on('join', () => {
-
-  console.log("joined")
-
+  console.log("bot joined")
   var answerString = ""
-  var questionOn = false
-
   Bot.on('message', chatter => {
     var words = chatter.message.toLowerCase().split(" ")
     if (canAdmin(chatter) && words.includes("!newgame")){
+      lastUsed = new Date()
       game = new Game()
       questionOn = false
+      Bot.say("New Game!")
     } else if (canAdmin(chatter) && words.includes("!nextquestion")){
+      lastUsed = new Date()
       game.clearMessages(); 
       answerString = "";
       questionOn = true;
-      Bot.say("Next Question!!")
+      Bot.say("Next Question!")
+      if (!timerSet) { setTimeOut(checkLastUsed, 36000) }
     } else if (canAdmin(chatter) && words.includes("!whosaid")) {
+      lastUsed = new Date()
       var answerString = getAnswerString(words)
       var message = game.getCorrectUsers(answerString);
+      questionOn = false
       Bot.say(message);
     } else if (canAdmin(chatter) && words.includes("!score")) {
+      lastUsed = new Date()
       Bot.say(game.getScoreMessage(false))
     } else if (canAdmin(chatter) && words.includes("!finalscore")) {
+      lastUsed = new Date()
       Bot.say("Final Score: " + game.getScoreMessage(true))
-      questionOn = false
-    } else if (canAdmin(chatter) && words.includes("!endquestion")) {
-      console.log("stopped message tracking")
       questionOn = false
     } else if (questionOn) { 
       game.addMessageWithChatter(chatter)
-    }
+    } else { console.log("Game Not On!") }
   })
 })
 

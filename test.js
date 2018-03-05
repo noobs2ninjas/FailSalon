@@ -16,7 +16,7 @@ function addMessagesToUser(user, messages) {
 var chatter1 = new Chatter("noobs2ninjas", "alcohol")
 game.addMessageWithChatter(chatter1)
 
-var messageArray1 = ["tea", "coffee",  "cheese toast"];
+var messageArray1 = ["tea", "coffee",  "cheese, new mexico"];
 addMessagesToUser(chatter1.display_name, messageArray1)
 
 var chatter2 = new Chatter("MattDevelopment", "bread")

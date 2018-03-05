@@ -14,13 +14,12 @@ module.exports = class Game {
 			if (user.name == chatter.display_name) { 
 				didSet = true;
 				user.messages.push(chatter.message);
-			} else { console.log("nope"); }
+			}
 		}
 		if (didSet == false) { 
 			var user = new User(chatter.display_name, chatter.message);
 			this.users.push(user);
 		}
-		console.log("users: " + this.users.length)
 	}
 
 	clearMessages(){
@@ -32,11 +31,8 @@ module.exports = class Game {
 
 	getCorrectUsers(answer){
 		var message = ""
-		console.log("starting: " + this.users.length)
 		for (var index in this.users) {
 			var user = this.users[index]
-			console.log("user:" + user.name)
-			console.log("messages: " + user.messages)
 			if (user.didUserSay(answer)) {
 				message += user.name + ", "
 			}

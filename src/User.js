@@ -8,9 +8,11 @@ module.exports = class User {
 
 	didUserSay(answer) {
 		for (var index in this.messages) {
-  		var words = this.messages[index].split(" ")
+  		var words = this.messages[index].split(", ")
+
       words.forEach(function(word) {
         word.trim()
+        console.log(word)
       })
   		if (words.includes(answer)) { 
   			this.score += 1;
