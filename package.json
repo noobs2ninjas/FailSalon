@@ -4,11 +4,12 @@
   "description": "Bot for FailSalon",
   "main": "index.js",
   "scripts": {
-    "start": "node index.js"
+    "start": "node index.js",
+    "test": "node test.js"
   },
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "twitch-bot": "1.2.3"
+    "twitch-bot": "1.2.1"
   }
 }

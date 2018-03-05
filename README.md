@@ -14,7 +14,9 @@ Before beginning please install [NodeJS](https://nodejs.org/en/)
 
 4. Start the application.
     The fastest way to do this is to back out of the folder this project is in and shift + right-click the folder. Then select the option "Open cmd line here" or "Open in Powershell"(depending on the version of windows you have). When the cmd or powershell window opens type in "npm start" and hit enter.
-    **The first time you download and run this application type "npm install" BEFORE running npm start**
+    **The first time you download and run this application type "npm install" BEFORE running npm start.**
+
+5. Rinse and repeat step 4 whenever you want to run your bot!
 
 # Commands
 
