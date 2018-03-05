@@ -13,11 +13,11 @@ module.exports = class Game {
 			var user = this.users[index];
 			if (user.name == chatter.display_name) { 
 				didSet = true;
-				user.messages.push(chatter.message);
+				user.messages.push(chatter.message.toLowerCase());
 			}
 		}
 		if (didSet == false) { 
-			var user = new User(chatter.display_name, chatter.message);
+			var user = new User(chatter.display_name, chatter.message.toLowerCase());
 			this.users.push(user);
 		}
 	}
