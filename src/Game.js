@@ -47,7 +47,7 @@ module.exports = class Game {
 		var message = ""
 		for (var index in this.users) {
 			var user = this.users[index]
-			message += user.name + " - " + user.score + ", "
+			if (user.score > 0) { message += user.name + " - " + user.score + ", " }
 		}
 		return message
 	}
