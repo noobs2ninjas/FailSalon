@@ -25,7 +25,7 @@ function canAdmin(chatter) {
 }
 
 Bot.on('join', () => {
-  console.log("Sup Bitches! Bot joined!")
+  Bot.say("Sup Bitches! Bot here!")
   var answerString = ""
   var questionOn = false;
   Bot.on('message', chatter => {
