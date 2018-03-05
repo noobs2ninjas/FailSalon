@@ -12,12 +12,6 @@ const Bot = new TwitchBot({
   channels : [process.env.CHANNEL]
 })
 
-// const Bot = new TwitchBot({
-//   username: 'Noobs2NinjasBot',
-//   oauth: 'oauth:q3kwhkj6lbhvox73gmmugr6a2jg5x1',
-//   channels : ['noobs2ninjas']
-// })
-
 function getAnswerString(words) {
   var answerString = "";
   for (index in words){
