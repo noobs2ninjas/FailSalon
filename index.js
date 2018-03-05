@@ -2,8 +2,6 @@ var Game = require('./src/Game')
 var game = new Game();
 const TwitchBot = require('twitch-bot');
 
-var questionOn = false;
-
 const Bot = new TwitchBot({
   username: process.env.USERNAME,
   oauth: process.env.OAUTH,
@@ -29,6 +27,7 @@ function canAdmin(chatter) {
 Bot.on('join', () => {
   console.log("Sup Bitches! Bot joined!")
   var answerString = ""
+  var questionOn = false;
   Bot.on('message', chatter => {
     var words = chatter.message.toLowerCase().split(" ")
     if (canAdmin(chatter) && words.includes("!newgame")){
@@ -43,8 +42,8 @@ Bot.on('join', () => {
     } else if (canAdmin(chatter) && words.includes("!whosaid")) {
       var answerString = getAnswerString(words)
       var message = game.getCorrectUsers(answerString);
-      questionOn = false
       Bot.say(message);
+      questionOn = false
     } else if (canAdmin(chatter) && words.includes("!score")) {
       Bot.say(game.getScoreMessage(false))
     } else if (canAdmin(chatter) && words.includes("!finalscore")) {
@@ -52,7 +51,7 @@ Bot.on('join', () => {
       questionOn = false
     } else if (questionOn) { 
       game.addMessageWithChatter(chatter)
-    } else { console.log("Game Not On!") }
+    } 
   })
 })
 
