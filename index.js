@@ -39,7 +39,7 @@ function canAdmin(chatter) {
 }
 
 Bot.on('join', () => {
-  console.log("bot joined")
+  console.log("Sup Bitches! Bot joined!")
   var answerString = ""
   Bot.on('message', chatter => {
     var words = chatter.message.toLowerCase().split(" ")
