@@ -1,3 +1,4 @@
+
 var Game = require('./src/Game')
 var game = new Game();
 const TwitchBot = require('twitch-bot');
@@ -17,6 +18,7 @@ function getAnswerString(words) {
       answerString += " ";
     }
   }
+  console.log("looking for: " + answerString)
   return answerString.toLowerCase().trim()
 }
 
@@ -25,15 +27,17 @@ function canAdmin(chatter) {
 }
 
 Bot.on('join', () => {
-  Bot.say("Sup Bitches! Bot here!")
+
+  Bot.say("Bots here bitches!")
+
   var answerString = ""
-  var questionOn = false;
+  var questionOn = false
+
   Bot.on('message', chatter => {
     var words = chatter.message.toLowerCase().split(" ")
     if (canAdmin(chatter) && words.includes("!newgame")){
       game = new Game()
       questionOn = false
-      Bot.say("New Game!")
     } else if (canAdmin(chatter) && words.includes("!nextquestion")){
       game.clearMessages(); 
       answerString = "";
@@ -43,7 +47,6 @@ Bot.on('join', () => {
       var answerString = getAnswerString(words)
       var message = game.getCorrectUsers(answerString);
       Bot.say(message);
-      questionOn = false
     } else if (canAdmin(chatter) && words.includes("!score")) {
       Bot.say(game.getScoreMessage(false))
     } else if (canAdmin(chatter) && words.includes("!finalscore")) {
@@ -51,7 +54,7 @@ Bot.on('join', () => {
       questionOn = false
     } else if (questionOn) { 
       game.addMessageWithChatter(chatter)
-    } 
+    }
   })
 })
 

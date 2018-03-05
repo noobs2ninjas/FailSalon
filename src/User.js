@@ -12,7 +12,6 @@ module.exports = class User {
 
       words.forEach(function(word) {
         word.trim()
-        console.log(word)
       })
   		if (words.includes(answer)) { 
   			this.score += 1;
