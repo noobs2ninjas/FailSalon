@@ -54,7 +54,7 @@ Bot.on('join', () => {
       answerString = "";
       questionOn = true;
       Bot.say("Next Question!")
-      if (!timerSet) { setTimeOut(checkLastUsed, 36000) }
+      //if (!timerSet) { setTimeOut(checkLastUsed, 36000) }
     } else if (canAdmin(chatter) && words.includes("!whosaid")) {
       lastUsed = new Date()
       var answerString = getAnswerString(words)
