@@ -38,6 +38,7 @@ Bot.on('join', () => {
     if (canAdmin(chatter) && words.includes("!newgame")){
       game = new Game()
       questionOn = false
+      Bot.say("New Game! Lets do this! ")
     } else if (canAdmin(chatter) && words.includes("!nextquestion")){
       game.clearMessages(); 
       answerString = "";
@@ -47,6 +48,7 @@ Bot.on('join', () => {
       var answerString = getAnswerString(words)
       var message = game.getCorrectUsers(answerString);
       Bot.say(message);
+      questionOn = false
     } else if (canAdmin(chatter) && words.includes("!score")) {
       Bot.say(game.getScoreMessage(false))
     } else if (canAdmin(chatter) && words.includes("!finalscore")) {
